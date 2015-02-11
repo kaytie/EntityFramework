@@ -5,7 +5,7 @@ namespace Microsoft.Data.Entity.Internal
     using System.Globalization;
     using System.Reflection;
     using System.Resources;
-	using JetBrains.Annotations;
+    using JetBrains.Annotations;
 
     public static class Strings
     {
@@ -138,6 +138,22 @@ namespace Microsoft.Data.Entity.Internal
         public static string CollectionArgumentIsEmpty([CanBeNull] object argumentName)
         {
             return string.Format(CultureInfo.CurrentCulture, GetString("CollectionArgumentIsEmpty", "argumentName"), argumentName);
+        }
+
+        /// <summary>
+        /// The edge cannot be added because the graph does not contain vertex '{vertex}'.
+        /// </summary>
+        public static string GraphDoesNotContainVertex([CanBeNull] object vertex)
+        {
+            return string.Format(CultureInfo.CurrentCulture, GetString("GraphDoesNotContainVertex", "vertex"), vertex);
+        }
+
+        /// <summary>
+        /// The graph contained a cycle that could not be broken.
+        /// </summary>
+        public static string CycleBreakFailed()
+        {
+            return string.Format(CultureInfo.CurrentCulture, GetString("CycleBreakFailed"));
         }
 
         /// <summary>

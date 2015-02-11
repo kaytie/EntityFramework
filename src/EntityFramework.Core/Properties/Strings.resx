@@ -441,4 +441,10 @@
   <data name="InvalidValueGeneratorFactoryProperty" xml:space="preserve">
     <value>The '{factory}' cannot create a value generator for property '{property}' on entity type '{entityType}'. Only integer properties are supported.</value>
   </data>
+  <data name="GraphDoesNotContainVertex" xml:space="preserve">
+    <value>The edge cannot be added because the graph does not contain vertex '{vertex}'.</value>
+  </data>
+  <data name="CycleBreakFailed" xml:space="preserve">
+    <value>The graph contained a cycle that could not be broken.</value>
+  </data>
 </root>
