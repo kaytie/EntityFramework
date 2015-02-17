@@ -134,16 +134,16 @@ namespace Microsoft.Data.Entity.Utilities
                 {
                     var broken = false;
 
-                    var canidateVertices = predecessorCounts.Keys.ToList();
-                    var canidateIndex = 0;
+                    var candidateVertices = predecessorCounts.Keys.ToList();
+                    var candidateIndex = 0;
 
                     // Iterrate over the unsorted verticies
-                    while (canidateIndex < canidateVertices.Count && !broken && canBreakEdge != null)
+                    while (candidateIndex < candidateVertices.Count && !broken && canBreakEdge != null)
                     {
-                        var canidateVertex = canidateVertices[canidateIndex];
+                        var candidateVertex = candidateVertices[candidateIndex];
 
-                        // Find verticies in the unsorted portion of the graph that have edges to the canidate
-                        var incommingNeighbours = GetIncomingNeighbours(canidateVertex)
+                        // Find verticies in the unsorted portion of the graph that have edges to the candidate
+                        var incommingNeighbours = GetIncomingNeighbours(candidateVertex)
                             .Where(neighbour => predecessorCounts.ContainsKey(neighbour)).ToList();
                         var neighbourIndex = 0;
 
@@ -151,19 +151,19 @@ namespace Microsoft.Data.Entity.Utilities
                         {
                             var incommingNeighbour = incommingNeighbours[neighbourIndex];
                             // Check to see if the edge can be broken
-                            if (canBreakEdge(incommingNeighbour, canidateVertex, _successorMap[incommingNeighbour][canidateVertex]))
+                            if (canBreakEdge(incommingNeighbour, candidateVertex, _successorMap[incommingNeighbour][candidateVertex]))
                             {
-                                predecessorCounts[canidateVertex]--;
-                                if (predecessorCounts[canidateVertex] == 0)
+                                predecessorCounts[candidateVertex]--;
+                                if (predecessorCounts[candidateVertex] == 0)
                                 {
-                                    sortedQueue.Add(canidateVertex);
-                                    predecessorCounts.Remove(canidateVertex);
+                                    sortedQueue.Add(candidateVertex);
+                                    predecessorCounts.Remove(candidateVertex);
                                     broken = true;
                                 }
                             }
                             neighbourIndex++;
                         }
-                        canidateIndex++;
+                        candidateIndex++;
                     }
                     if (!broken)
                     {
